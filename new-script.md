@@ -44,14 +44,14 @@ Installed packages
 library(tidyverse)
 ```
 
-    ## ── Attaching packages ──────────────────── tidyverse 1.3.0 ──
+    ## ── Attaching packages ───────────── tidyverse 1.3.0 ──
 
     ## ✓ ggplot2 3.2.1     ✓ purrr   0.3.3
     ## ✓ tibble  2.1.3     ✓ dplyr   0.8.3
     ## ✓ tidyr   1.0.2     ✓ stringr 1.4.0
     ## ✓ readr   1.3.1     ✓ forcats 0.4.0
 
-    ## ── Conflicts ─────────────────────── tidyverse_conflicts() ──
+    ## ── Conflicts ──────────────── tidyverse_conflicts() ──
     ## x dplyr::filter() masks stats::filter()
     ## x dplyr::lag()    masks stats::lag()
 
@@ -67,4 +67,28 @@ nrow(ipt)
 
 ``` r
 # Adding some new lines 
+
+# Some new analyses
+
+df <- iris
+
+df %>% group_by(Species) %>% summarise (Sepal.Length = mean (Sepal.Length),
+                                        Sepal.Width = mean (Sepal.Width))
 ```
+
+    ## # A tibble: 3 x 3
+    ##   Species    Sepal.Length Sepal.Width
+    ##   <fct>             <dbl>       <dbl>
+    ## 1 setosa             5.01        3.43
+    ## 2 versicolor         5.94        2.77
+    ## 3 virginica          6.59        2.97
+
+``` r
+df %>% group_by(Species) %>% summarise (Sepal.Length = mean (Sepal.Length),
+                                        Sepal.Width = mean (Sepal.Width)) %>% 
+  ggplot (aes (x = Species,
+               y = Sepal.Length)) + 
+  geom_col ()
+```
+
+![](new-script_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
