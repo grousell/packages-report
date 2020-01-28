@@ -26,3 +26,15 @@ nrow(ipt)
 
 # Adding some new lines 
 
+# Some new analyses
+
+df <- iris
+
+df %>% group_by(Species) %>% summarise (Sepal.Length = mean (Sepal.Length),
+                                        Sepal.Width = mean (Sepal.Width))
+
+df %>% group_by(Species) %>% summarise (Sepal.Length = mean (Sepal.Length),
+                                        Sepal.Width = mean (Sepal.Width)) %>% 
+  ggplot (aes (x = Species,
+               y = Sepal.Length)) + 
+  geom_col ()
