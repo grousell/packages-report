@@ -31,7 +31,9 @@ nrow(ipt)
 df <- iris
 
 df %>% group_by(Species) %>% summarise (Sepal.Length = mean (Sepal.Length),
-                                        Sepal.Width = mean (Sepal.Width))
+                                        Sepal.Width = mean (Sepal.Width)) 
+
+
 
 df %>% group_by(Species) %>% summarise (Sepal.Length = mean (Sepal.Length),
                                         Sepal.Width = mean (Sepal.Width)) %>% 
